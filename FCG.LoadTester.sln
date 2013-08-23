@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCG.LoadTester", "FCG.LoadTester\FCG.LoadTester.csproj", "{7B23FA45-1B17-40CE-808F-C17A06171DD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCG.LoadTester.Console", "FCG.LoadTester.Console\FCG.LoadTester.Console.csproj", "{E17FDECA-A918-4E3F-ACD4-49EC1027EE27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCG.LoadTester.AppToTest", "FCG.LoadTester.AppToTest\FCG.LoadTester.AppToTest.csproj", "{938EB509-BF58-46CF-BAC6-7A09B168ED06}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B23FA45-1B17-40CE-808F-C17A06171DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B23FA45-1B17-40CE-808F-C17A06171DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B23FA45-1B17-40CE-808F-C17A06171DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B23FA45-1B17-40CE-808F-C17A06171DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E17FDECA-A918-4E3F-ACD4-49EC1027EE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E17FDECA-A918-4E3F-ACD4-49EC1027EE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E17FDECA-A918-4E3F-ACD4-49EC1027EE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E17FDECA-A918-4E3F-ACD4-49EC1027EE27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{938EB509-BF58-46CF-BAC6-7A09B168ED06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{938EB509-BF58-46CF-BAC6-7A09B168ED06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{938EB509-BF58-46CF-BAC6-7A09B168ED06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{938EB509-BF58-46CF-BAC6-7A09B168ED06}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
