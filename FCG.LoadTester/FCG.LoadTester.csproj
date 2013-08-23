@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FCG.LoadTester</RootNamespace>
     <AssemblyName>FCG.LoadTester</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -71,7 +72,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FCG.GameServer.Engine\FCG.GameServer.Engine.csproj">
+    <ProjectReference Include="..\..\FCG.GameServer.Engine\FCG.GameServer.Engine.csproj">
       <Project>{D991750A-2913-4907-B710-6690AD843753}</Project>
       <Name>FCG.GameServer.Engine</Name>
     </ProjectReference>

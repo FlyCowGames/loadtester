@@ -11,7 +11,7 @@ namespace FCG.LoadTester.Console1
     {
         public static void Main(string[] args)
         {
-            var loadTester = new LoadTester(api =>
+            var loadTester = new LoadTesterEngine(api =>
             {
                 var response = api.Get(url: "http://localhost:9593/");
                 api.Assert(response.CodeType == ResponseCodes.OK);

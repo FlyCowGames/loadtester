@@ -5,9 +5,9 @@ namespace FCG.LoadTester
 {
     public class Report
     {
-        private readonly LoadTester _loadTester;
+        private readonly LoadTesterEngine _loadTester;
 
-        public Report(LoadTester loadTester)
+        public Report(LoadTesterEngine loadTester)
         {
             _loadTester = loadTester;
         }

@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace FCG.LoadTester
 {
-    public class LoadTester
+    public class LoadTesterEngine
     {
         private readonly Action<Api> _action;
 
@@ -22,7 +22,7 @@ namespace FCG.LoadTester
 
         public List<Api> ApiInstances { get; private set; }
 
-        public LoadTester(Action<Api> action)
+        public LoadTesterEngine(Action<Api> action)
         {
             _action = action;
             Status = TestingStatus.Idle;

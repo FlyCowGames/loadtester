@@ -13,7 +13,7 @@ namespace FCG.LoadTester
     {
         enum PostType { Form, Json }
 
-        private readonly LoadTester _loadTester;
+        private readonly LoadTesterEngine _loadTester;
 
         public TestingStatus Status
         {
@@ -29,7 +29,7 @@ namespace FCG.LoadTester
 
         public List<TesterEvent> EventList { get; private set; }
 
-        public Api(LoadTester loadTester)
+        public Api(LoadTesterEngine loadTester)
         {
             _loadTester = loadTester;
             EventList = new List<TesterEvent>();
