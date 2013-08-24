@@ -5,7 +5,6 @@ using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
 using FCG.LoadTester.Engine;
-using NUnit.Framework;
 
 namespace FCG.LoadTester
 {
@@ -39,7 +38,7 @@ namespace FCG.LoadTester
         {
             if (!condition)
             {
-                throw new AssertionException("Assertion failed.");
+                throw new ApplicationException("Assertion failed.");
             }
         }
 
