@@ -36,6 +36,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -51,6 +54,7 @@
     <Compile Include="Engine\Api.cs" />
     <Compile Include="Engine\DynamicHelper.cs" />
     <Compile Include="Engine\DynamicJsonConverter.cs" />
+    <Compile Include="Engine\EventManager.cs" />
     <Compile Include="Engine\NameValueCollectionConversions.cs" />
     <Compile Include="Engine\CustomWebClient.cs">
       <SubType>Component</SubType>

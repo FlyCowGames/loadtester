@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
 using FCG.LoadTester.Engine;
+using HtmlAgilityPack;
 
 namespace FCG.LoadTester
 {
@@ -26,12 +26,9 @@ namespace FCG.LoadTester
 
         private byte[] _data;
 
-        public List<TesterEvent> EventList { get; private set; }
-
         public Api(LoadTesterEngine loadTester)
         {
             _loadTester = loadTester;
-            EventList = new List<TesterEvent>();
         }
 
         public void Assert(bool condition)
@@ -52,7 +49,11 @@ namespace FCG.LoadTester
                                                            key => string.Format("{0}={1}", HttpUtility.UrlEncode(key), HttpUtility.UrlEncode(nvc[key]))));
             try
             {
-                _data = client.DownloadData(url + "?" + queryString);
+                if (!string.IsNullOrEmpty(queryString))
+                {
+                    url = url + "?" + queryString;
+                }
+                _data = client.DownloadData(url);
                 return BuildResponse(client.Response);
             }
             catch (WebException)
@@ -194,12 +195,12 @@ namespace FCG.LoadTester
         {
             if (!string.IsNullOrEmpty(name))
             {
-                EventList.Add(new TesterEvent()
-                    {
-                        Time = DateTime.Now,
-                        Name = name,
-                        Type = TesterEventType.Start
-                    });
+                _loadTester.EventManager.Add(this, new TesterEvent()
+                {
+                    Time = DateTime.Now,
+                    Name = name,
+                    Type = TesterEventType.Start
+                });
             }
         }
 
@@ -207,12 +208,12 @@ namespace FCG.LoadTester
         {
             if (!string.IsNullOrEmpty(name))
             {
-                EventList.Add(new TesterEvent()
-                    {
-                        Time = DateTime.Now,
-                        Name = name,
-                        Type = TesterEventType.End
-                    });
+                _loadTester.EventManager.Add(this, new TesterEvent()
+                {
+                    Time = DateTime.Now,
+                    Name = name,
+                    Type = TesterEventType.End
+                });
             }
         }
 
@@ -245,6 +246,13 @@ namespace FCG.LoadTester
                 }
             }
             return ResponseDataTypes.Undefined;
+        }
+
+        public HtmlDocument CreateHtmlDocument(string dataString)
+        {
+            var doc = new HtmlDocument();
+            doc.LoadHtml(dataString);
+            return doc;
         }
     }
 }

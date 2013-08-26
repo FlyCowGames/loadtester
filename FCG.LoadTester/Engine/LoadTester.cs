@@ -1,14 +1,15 @@
 ﻿using System.Linq;
 using System;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Threading;
+using FCG.LoadTester.Engine;
 
 namespace FCG.LoadTester
 {
     public class LoadTesterEngine
     {
         private readonly Action<Api> _action;
+        private Action<Api> action;
 
         public DateTime? StartTime { get; private set; }
 
@@ -20,17 +21,17 @@ namespace FCG.LoadTester
 
         public Report Report { get; set; }
 
-        public List<Api> ApiInstances { get; private set; }
+        public EventManager EventManager { get; set; }
 
         public LoadTesterEngine(Action<Api> action)
         {
             _action = action;
             Status = TestingStatus.Idle;
             Report = new Report(this);
-            ApiInstances = new List<Api>();
+            EventManager = new EventManager();
         }
 
-        public Task RunAsync(TimeSpan time, int instanceCount)
+        public Task RunAsync(TimeSpan time, int numberOfInstances)
         {
             Duration = time;
 
@@ -45,18 +46,12 @@ namespace FCG.LoadTester
                     Status = TestingStatus.Stopping;
                 });
 
-                ThreadPool.SetMaxThreads(instanceCount, instanceCount);
-                ThreadPool.SetMinThreads(instanceCount, instanceCount);
+                ThreadPool.SetMaxThreads(numberOfInstances, numberOfInstances);
+                ThreadPool.SetMinThreads(numberOfInstances, numberOfInstances);
 
-                Enumerable.Range(0, instanceCount).AsParallel().WithDegreeOfParallelism(instanceCount).ForAll(param =>
+                Enumerable.Range(0, numberOfInstances).AsParallel().WithDegreeOfParallelism(numberOfInstances).ForAll(param =>
                 {
-                    Api api;
-                    lock (ApiInstances)
-                    {
-                        api = new Api(this);
-                        ApiInstances.Add(api);
-                    }
-
+                    Api api = new Api(this);
                     while (Status == TestingStatus.Running)
                         _action(api);
                 });

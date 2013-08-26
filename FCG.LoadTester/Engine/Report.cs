@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace FCG.LoadTester
 {
@@ -22,14 +21,7 @@ namespace FCG.LoadTester
                 {
                     return double.NaN;
                 }
-                var count = 0;
-                _loadTester.ApiInstances.ForEach(
-                    api =>
-                        {
-                            var endCount = api.EventList.Count(e => e.Type == TesterEventType.End);
-                            count += endCount;
-                        }
-                    );
+                var count = _loadTester.EventManager.CountEnd();
                 return count / timeElapsed.Value.TotalSeconds;
             }
         }
